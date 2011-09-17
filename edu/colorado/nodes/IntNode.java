@@ -4,10 +4,10 @@
 
 package edu.colorado.nodes;
 
-/******************************************************************************
+/*******************************************************************************
 * An IntNode provides a node for a linked list with 
 * integer data in each node.
-*
+* testing push 
 * @note
 *   Lists of nodes can be made of any length, limited only by the amount of
 *   free memory in the heap. But beyond Integer.MAX_VALUE (2,147,483,647),
