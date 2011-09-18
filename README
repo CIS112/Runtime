@@ -1,0 +1,22 @@
+CLASS PROJECT : Leading you on a bit more down this dark, sneaky path… *wink*… look at the Time Analysis in Figure 3.9 for IntArrayBag. For the methods :
+
+Constructor
+countOccurences
+getCapacity
+remove
+size
+trimToSize
+Union
+
+Write a program that times how long it takes each of these methods to run for IntArrayBag and for IntLinkedBag under different sizes of Bags. It will produce data for the table below.
+
+Class		100	1000	10,000	100,000	1,000,000	More?
+IntArrayBag
+IntLinkedBag
+
+
+Work together on this, split it up any way you like. Include commented, documented code as well as a report giving your reasoning (hypotheses at this stage) for why the speeds are what they are. Describe how the speeds you record make sense (or don’t) with the Big O notation of table 3.9.
+
+Again work on the Wiki, boards etc to collaborate on this. Try to together figure out what is going on, and then to explain it to the folks struggling with it.
+
+
