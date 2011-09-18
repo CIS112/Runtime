@@ -1,0 +1,24 @@
+One test run resulted with this output:
+
+ ----jGRASP exec: java RuntimeTest
+
+			100		1000		10000		100000		1000000
+IAB
+constructor		880           	7350          	51290         	293840        	5882200
+countOccurance		4780         	20280          	18120         	394030          1030
+getCapacity		250            	590            	210           	240            	140
+remove			2680          	46650           4180          	68030         	687670
+size			210            	170            	180            	180            	120
+trimToSize		930           	3820          	81450         	141270        	6711650
+union			2690           	6770          	30570        	1365750      	152860130
+
+ILB
+constructor            0              	0              	0              	0             	0
+countOccurance         4950          	14570          	53040        	1879600        	6831630
+getCapacity            0              	0             	0              	0              	0
+remove                 3810           	7320          	32800        	1005740        	4329610
+size                   190            	200            	200            	180            	120
+trimToSize             0              	0             	0              	0             	0
+union                  47250          	68700         	757700        	8496740      	932753850
+
+ ----jGRASP: operation complete.
