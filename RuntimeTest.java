@@ -3,7 +3,8 @@ import  edu.colorado.collections.IntLinkedBag;
 import java.util.Random;
 
 /**
-*    @author Walt Owoc   
+*    @author CIS112  
+*   
 *    <A HREF="mailto:wowoc9751@students.mcs.edu"> (wowoc9751@students.mc3.edu) </A>
 *    @version
 *    September 16, 2011
