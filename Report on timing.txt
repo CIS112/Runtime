@@ -22,3 +22,5 @@ trimToSize             0              	0             	0              	0         
 union                  47250          	68700         	757700        	8496740      	932753850
 
  ----jGRASP: operation complete.
+
+The time table shows a linear increase in the time is takes to complete a number of takes. If you follow this linear patter, you can estimate on how long more calculations would take.
