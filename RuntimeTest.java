@@ -3,6 +3,8 @@ import  edu.colorado.collections.IntLinkedBag;
 import java.util.Random;
 
 /**
+*   Times how long it takes different methods to run for IntArrayBag and 
+*       for IntLinkedBag under different sizes of Bags.
 *    @author CIS112  
 *   
 *    <A HREF="mailto:wowoc9751@students.mcs.edu"> (wowoc9751@students.mc3.edu) </A>
@@ -41,7 +43,9 @@ public class RuntimeTest {
 	
 	
 	/**
+         * Main method to instantiate a RuntimeTest and call go
 	 * @param args
+         *      the command line arguments
 	 */
 	public static void main(String[] args) 
 	{
@@ -49,6 +53,10 @@ public class RuntimeTest {
 		newTest.go();
 	}
 	
+        /**
+         * Runs the test and prints results to screen
+         * @param - none
+         */
 	public void go()
 	{	   
 			//sets up column headers 
@@ -169,7 +177,7 @@ public class RuntimeTest {
 				
 				
 				
-				//time of trimeToSizeMethod
+				//time of trimToSizeMethod
 				// trim  re-instantiates the bag and fills it to a random size
 				//this is done to simulate different trim times to get an average case
 				runtimer1 = 0;
