@@ -54,16 +54,12 @@ public class RuntimeTest {
 	}
 	
         /**
-         * Runs the test and prints results to screen
+         * Runs the test
          * @param - none
          */
 	public void go()
-	{	   
-			//sets up column headers 
-			System.out.printf("%15s", " ");
-		    for(int size : numElements)
-			System.out.printf("%15s",size);
-			System.out.println("\nIAB");
+	{	  
+                        System.out.println("Running Test....");
 		
 			//for loop to construct n-size bags and run benchmark testing
 			int a = 0;
@@ -214,42 +210,63 @@ public class RuntimeTest {
 			a++;//increment results array counter
 			}//end of IAB test loop
 			
+			// Print results to the standard IO
+			print();
 			
-			
-			//print results to the standard IO
-			
-			int m = 0;
-			for(long[] r :resultsIAB)
-			
-			{
-				System.out.printf("%-15s", methods[m]);
-				
-				for(long c : r)
-					System.out.printf("%15s", c);
-				
-				System.out.println();
-				m++;
-			}
-		
-		
-			
-////////////////////////////////////////////////////////IntLinkedBag//////////////////////////////////////
-				 
-				System.out.println("\nILB");
-				int n = 0;
-				for(long[] r :resultsILB)
-				
-				{
-					System.out.printf("%-15s", methods[n]);
-					
-					for(long c : r)
-						System.out.printf("%15s", c);
-					
-					System.out.println();
-					n++;
-				}
 			
 	}
+        
+        /**
+         * Prints results to the standard IO
+         * @param - none
+         * @postcondition
+         *      results are printed to the standard IO
+         */
+        public void print()
+        {
+            //sets up column headers 
+            System.out.printf("%15s", " ");
+            for(int size : numElements)
+            {
+                System.out.printf("%15s",size);
+            }
+            System.out.println("\nIAB");
+            
+
+            // Print IAB results
+            int m = 0;
+            for(long[] r :resultsIAB)
+            {
+                    System.out.printf("%-15s", methods[m]);
+
+                    for(long c : r)
+                    {
+                        System.out.printf("%15s", c);                        
+                    }
+
+                    System.out.println();
+                    m++;
+            }
+		
+		
+            // Print ILB results
+            System.out.println("\nILB");
+            int n = 0;
+            for(long[] r :resultsILB)
+            {
+                    System.out.printf("%-15s", methods[n]);
+
+                    for(long c : r)
+                    {
+                        System.out.printf("%15s", c);                        
+                    }
+                            
+
+                    System.out.println();
+                    n++;
+            }
+            
+        }
 	
 	/**
 	   * Fill a bag with random integers
