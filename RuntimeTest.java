@@ -49,8 +49,8 @@ public class RuntimeTest {
 	 */
 	public static void main(String[] args) 
 	{
-		RuntimeTest newTest = new RuntimeTest();
-		newTest.go();
+            RuntimeTest newTest = new RuntimeTest();
+            newTest.go();
 	}
 	
         /**
@@ -59,161 +59,157 @@ public class RuntimeTest {
          */
 	public void go()
 	{	  
-                        System.out.println("Running Test....");
-		
-			//for loop to construct n-size bags and run benchmark testing
-			int a = 0;
-			for(int size : numElements)
-			 
-			{
-				unionBag = new IntArrayBag(size);
-				unionBag.add(rand.nextInt(size));
-				testILBag = new IntLinkedBag();
-				unionILBag = new IntLinkedBag();
-				
-				//for loop to run test multiple times to smooth data
-				for(int i = 0; i < numIterations; i++)
-				{
-					//get system counter
-					startTime =	System.nanoTime();
-					testIABag = new IntArrayBag(size);
-					//add elapsed time to runtimer1 var
-					runtimer1 += System.nanoTime() - startTime;
-				}
-				//average over number iterations
-				runtimer1 = runtimer1/numIterations;
-				resultsIAB[0][a] =  runtimer1;
-				resultsILB[0][a] =(long) Double.NaN;
-				
-				
-				//fill the bags for testing, this operation does not require data reduction 	
-				for(int i = 0; i <= size; i++)
-				{
-					testIABag.add(rand.nextInt(size));
-					testILBag.add(rand.nextInt(size));
-					unionILBag.add(rand.nextInt(size));
-				}	
-				
-				///test time of countOccurance()   
-				runtimer1 = 0;
-				runtimer2 = 0;
-				for(int i = 0; i < numIterations; i++)
-				{
-					startTime =	System.nanoTime();
-					testIABag.countOccurrences(rand.nextInt(size));
-					runtimer1 += System.nanoTime() - startTime;
-					
-					startTime =	System.nanoTime();
-					testILBag.countOccurrences(rand.nextInt(size));
-					runtimer2 += System.nanoTime() - startTime; 
-				}
-				resultsIAB[1][a] = ( runtimer1/numIterations);
-				resultsILB[1][a] = ( runtimer2/numIterations);
-				
-				
-				
-				
-				
-				//test time of getCapacity
-				runtimer1 = 0;
-				runtimer2 = 0;
-				for(int i = 0; i < numIterations; i++)
-				{
-					startTime =	System.nanoTime();
-					testIABag.getCapacity();
-					runtimer1 += System.nanoTime() - startTime;
-				
-					
-				}
-				resultsIAB[2][a] = ( runtimer1/numIterations);
-				resultsILB[2][a] = (long) Double.NaN;
-				
-				
-				
-				//test time of remove
-				runtimer1 = 0;
-				runtimer2 = 0;
-				for(int i = 0; i < numIterations; i++)
-				{
-					startTime =	System.nanoTime();
-					testIABag.remove(rand.nextInt(size));
-					runtimer1 += System.nanoTime() - startTime;
-				    if(testIABag.size() <testIABag.getCapacity());
-					 testIABag.add(rand.nextInt(size));
-				
-					startTime =	System.nanoTime(); 
-					testILBag.remove(rand.nextInt(size));
-					runtimer2 += System.nanoTime() - startTime;
-					if(testILBag.size() < size)
-						testILBag.add(rand.nextInt(size));
-				
-				
-				}
-				resultsIAB[3][a] = ( runtimer1/numIterations);
-				resultsILB[3][a] = ( runtimer2/numIterations);
-				
-				
-				
-				// time of size method
-				runtimer1 = 0;
-				runtimer2 = 0;
-				for(int i = 0; i < numIterations; i++)
-				{
-					startTime =	System.nanoTime();
-					testIABag.size();
-					runtimer1 += System.nanoTime() - startTime;
-				
-					startTime =	System.nanoTime();
-					testILBag.size();
-					runtimer2 += System.nanoTime() - startTime;
-				
-				}
-				resultsIAB[4][a] = ( runtimer1/numIterations);
-				resultsILB[4][a] = ( runtimer2/numIterations);
-				
-				
-				
-				//time of trimToSizeMethod
-				// trim  re-instantiates the bag and fills it to a random size
-				//this is done to simulate different trim times to get an average case
-				runtimer1 = 0;
-				for(int i = 0; i < numIterations; i++)
-				{
-					testIABag = new IntArrayBag(size);
-					//generate random sizes to trim to
-					intArrayBagFill(testIABag,rand.nextInt(size), size );
-					
-					startTime =	System.nanoTime();
-					testIABag.trimToSize();
-					runtimer1 += System.nanoTime() - startTime;
-					
-				}
-				resultsIAB[5][a] = ((int)runtimer1/numIterations);
-				resultsILB[5][a] = (long) Double.NaN;
-				runtimer1 = 0;
-				
-			    
-			    //test time of union
-			    for(int i = 0; i < numIterations; i++)
-				{
-					startTime =	System.nanoTime();
-					//union is static so it is called with the "class." syntax
-					IntArrayBag.union(testIABag, unionBag);
-					runtimer1 += System.nanoTime() - startTime;
-				
-					startTime =	System.nanoTime();
-					IntLinkedBag.union(testILBag, unionILBag);
-					runtimer2 += System.nanoTime() - startTime;
-				}
-				resultsIAB[6][a] = ( runtimer1/numIterations);
-				resultsILB[6][a] = ( runtimer2/numIterations);
-			a++;//increment results array counter
-			}//end of IAB test loop
-			
-			// Print results to the standard IO
-			print();
-			
-			
+            System.out.println("Running Test....");
+
+            //for loop to construct n-size bags and run benchmark testing
+            int a = 0;
+            for(int size : numElements)
+            {
+                unionBag = new IntArrayBag(size);
+                unionBag.add(rand.nextInt(size));
+                testILBag = new IntLinkedBag();
+                unionILBag = new IntLinkedBag();
+
+                //for loop to run test multiple times to smooth data
+                for(int i = 0; i < numIterations; i++)
+                {
+                    //get system counter
+                    startTime =	System.nanoTime();
+                    testIABag = new IntArrayBag(size);
+                    //add elapsed time to runtimer1 var
+                    runtimer1 += System.nanoTime() - startTime;
+                }
+                //average over number iterations
+                runtimer1 = runtimer1/numIterations;
+                resultsIAB[0][a] =  runtimer1;
+                resultsILB[0][a] =(long) Double.NaN;
+
+
+                //fill the bags for testing, this operation does not require data reduction 	
+                for(int i = 0; i <= size; i++)
+                {
+                    testIABag.add(rand.nextInt(size));
+                    testILBag.add(rand.nextInt(size));
+                    unionILBag.add(rand.nextInt(size));
+                }	
+
+                ///test time of countOccurance()   
+                runtimer1 = 0;
+                runtimer2 = 0;
+                for(int i = 0; i < numIterations; i++)
+                {
+                    startTime =	System.nanoTime();
+                    testIABag.countOccurrences(rand.nextInt(size));
+                    runtimer1 += System.nanoTime() - startTime;
+
+                    startTime =	System.nanoTime();
+                    testILBag.countOccurrences(rand.nextInt(size));
+                    runtimer2 += System.nanoTime() - startTime; 
+                }
+                resultsIAB[1][a] = ( runtimer1/numIterations);
+                resultsILB[1][a] = ( runtimer2/numIterations);
+
+
+
+
+
+                //test time of getCapacity
+                runtimer1 = 0;
+                runtimer2 = 0;
+                for(int i = 0; i < numIterations; i++)
+                {
+                    startTime =	System.nanoTime();
+                    testIABag.getCapacity();
+                    runtimer1 += System.nanoTime() - startTime;
+                }
+                resultsIAB[2][a] = ( runtimer1/numIterations);
+                resultsILB[2][a] = (long) Double.NaN;
+
+
+
+                //test time of remove
+                runtimer1 = 0;
+                runtimer2 = 0;
+                for(int i = 0; i < numIterations; i++)
+                {
+                    startTime =	System.nanoTime();
+                    testIABag.remove(rand.nextInt(size));
+                    runtimer1 += System.nanoTime() - startTime;
+                    if(testIABag.size() <testIABag.getCapacity());
+                    {
+                        testIABag.add(rand.nextInt(size));                        
+                    }
+                         
+
+                    startTime =	System.nanoTime(); 
+                    testILBag.remove(rand.nextInt(size));
+                    runtimer2 += System.nanoTime() - startTime;
+                    if(testILBag.size() < size)
+                    {
+                        testILBag.add(rand.nextInt(size));                        
+                    }                              
+                }
+                resultsIAB[3][a] = ( runtimer1/numIterations);
+                resultsILB[3][a] = ( runtimer2/numIterations);
+
+
+
+                // time of size method
+                runtimer1 = 0;
+                runtimer2 = 0;
+                for(int i = 0; i < numIterations; i++)
+                {
+                    startTime =	System.nanoTime();
+                    testIABag.size();
+                    runtimer1 += System.nanoTime() - startTime;
+
+                    startTime =	System.nanoTime();
+                    testILBag.size();
+                    runtimer2 += System.nanoTime() - startTime;
+                }
+                resultsIAB[4][a] = ( runtimer1/numIterations);
+                resultsILB[4][a] = ( runtimer2/numIterations);
+
+
+
+                //time of trimToSizeMethod
+                // trim  re-instantiates the bag and fills it to a random size
+                //this is done to simulate different trim times to get an average case
+                runtimer1 = 0;
+                for(int i = 0; i < numIterations; i++)
+                {
+                    testIABag = new IntArrayBag(size);
+                    //generate random sizes to trim to
+                    intArrayBagFill(testIABag,rand.nextInt(size), size );
+
+                    startTime =	System.nanoTime();
+                    testIABag.trimToSize();
+                    runtimer1 += System.nanoTime() - startTime;
+                }
+                resultsIAB[5][a] = ((int)runtimer1/numIterations);
+                resultsILB[5][a] = (long) Double.NaN;
+                runtimer1 = 0;
+
+
+                //test time of union
+                for(int i = 0; i < numIterations; i++)
+                {
+                    startTime =	System.nanoTime();
+                    //union is static so it is called with the "class." syntax
+                    IntArrayBag.union(testIABag, unionBag);
+                    runtimer1 += System.nanoTime() - startTime;
+
+                    startTime =	System.nanoTime();
+                    IntLinkedBag.union(testILBag, unionILBag);
+                    runtimer2 += System.nanoTime() - startTime;
+                }
+                resultsIAB[6][a] = ( runtimer1/numIterations);
+                resultsILB[6][a] = ( runtimer2/numIterations);
+                a++;//increment results array counter
+            }//end of IAB test loop
+
+            // Print results to the standard IO
+            print();			
 	}
         
         /**
@@ -237,15 +233,15 @@ public class RuntimeTest {
             int m = 0;
             for(long[] r :resultsIAB)
             {
-                    System.out.printf("%-15s", methods[m]);
+                System.out.printf("%-15s", methods[m]);
 
-                    for(long c : r)
-                    {
-                        System.out.printf("%15s", c);                        
-                    }
+                for(long c : r)
+                {
+                    System.out.printf("%15s", c);                        
+                }
 
-                    System.out.println();
-                    m++;
+                System.out.println();
+                m++;
             }
 		
 		
@@ -254,16 +250,15 @@ public class RuntimeTest {
             int n = 0;
             for(long[] r :resultsILB)
             {
-                    System.out.printf("%-15s", methods[n]);
+                System.out.printf("%-15s", methods[n]);
 
-                    for(long c : r)
-                    {
-                        System.out.printf("%15s", c);                        
-                    }
-                            
+                for(long c : r)
+                {
+                    System.out.printf("%15s", c);                        
+                }
 
-                    System.out.println();
-                    n++;
+                System.out.println();
+                n++;
             }
             
         }
@@ -283,10 +278,10 @@ public class RuntimeTest {
 	   **/
 	public void intArrayBagFill(IntArrayBag bag,int howMany, int range)
 	{
-		for(int i = 0; i <= howMany; i++)
-		{
-			bag.add(rand.nextInt(range));
-		}
+            for(int i = 0; i <= howMany; i++)
+            {
+                bag.add(rand.nextInt(range));
+            }
 	}
 
 }
